@@ -16,7 +16,7 @@ public class ColorfulObject : MonoBehaviour
     Color desiredColor = Color.white;
     public bool objectVisible = false;
 
-    private void Start()
+    public virtual void Start()
     {
         colorManager = ColorManager.instance;
         renderer = GetComponent<SpriteRenderer>();
@@ -24,12 +24,12 @@ public class ColorfulObject : MonoBehaviour
         ColorManager.instance.onColorChanged += ColorChanged;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         renderer.color = (renderer.color * (1 - 5 * Time.deltaTime) + desiredColor * 5 * Time.deltaTime);
     }
 
-    private void ColorChanged()
+    public virtual void ColorChanged()
     {
         desiredColor = new Color((colorManager.layer0Red && colorRed) != objectOnLayer1 ? 1 : 0,
                                     (colorManager.layer0Green && colorGreen) != objectOnLayer1 ? 1 : 0,

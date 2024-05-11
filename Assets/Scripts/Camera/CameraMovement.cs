@@ -7,9 +7,9 @@ public class CameraMovement : MonoBehaviour
     public Transform target;
 
 
-    private void Update()
+    private void LateUpdate()
     {
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, target.position.x, Time.deltaTime),
-            Mathf.Lerp(transform.position.y, target.position.y, Time.deltaTime),-10f);
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, target.position.x, 4 * Time.deltaTime),
+            Mathf.Lerp(transform.position.y, target.position.y, 4 * Time.deltaTime),-10f);
     }
 }

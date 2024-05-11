@@ -9,7 +9,7 @@ public class ColorManager : MonoBehaviour
 
     public bool layer0Red = true;
     public bool layer0Green = true;
-    public bool layer0Blue = true;
+    public bool layer0Blue = false;
 
     void Start()
     {

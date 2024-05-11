@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerBullet : MonoBehaviour
+{
+    [SerializeField] int damage = 20;
+    [SerializeField] float bulletSpeed = 6f;
+
+    Vector3 moveDirection = Vector3.up;
+    float deathTime;
+
+    Rigidbody2D rb2;
+
+    public void Init(Vector3 bulletDirection, bool onLayer1 = false)
+    {
+        rb2 = GetComponent<Rigidbody2D>();
+
+        moveDirection = bulletDirection.normalized;
+        deathTime = Time.time + 5;
+
+        if(onLayer1)
+        {
+            gameObject.layer = 7;
+            rb2.excludeLayers = rb2.excludeLayers & 0b0111111;
+        }
+        else
+        {
+            gameObject.layer = 6;
+            rb2.excludeLayers = rb2.excludeLayers & 0b1011111;
+        }
+    }
+
+
+    private void Update()
+    {
+        if (deathTime < Time.time)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        rb2.velocity = moveDirection * bulletSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyHealth))
+        {
+            enemyHealth.TakeDamage(damage);
+        }
+
+        Destroy(gameObject);
+    }
+}
