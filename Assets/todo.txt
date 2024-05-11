@@ -1,18 +1,6 @@
-Renk sistemi
-> Düşmanların göz
-> Nesneler
-
-Oyuncu
-> Saldırmak
-> Renk değiştirmek
-> Can sistemi
-
-Ana oyun döngüsü
-> Oyun sonu ekranı
-
-Map Generation??
-
-Düşmanlar
-> Düşman hareket sistemi
-> 
-
+Engeller
+Haritanın rastgele engellerle donatılması
+Giriş ekranı
+Ölme
+Farklı şekilde saldıran düşmanlar
+Dil atma

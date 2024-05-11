@@ -17,7 +17,7 @@ public class PlayerBullet : MonoBehaviour
     {
         rb2 = GetComponent<Rigidbody2D>();
 
-        moveDirection = bulletDirection.normalized;
+        moveDirection = bulletDirection;
         deathTime = Time.time + 5;
 
         if(onLayer1)
