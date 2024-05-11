@@ -27,7 +27,6 @@ public class RangedEnemy : Enemy
                 bullet.GetComponent<EnemyBullet>().Init(facingDirection, objectOnLayer1);
 
                 attackCooldown = attackCooldownNew;
-                print("SSASASASA");
             }
             attackCooldown -= Time.deltaTime;
         }

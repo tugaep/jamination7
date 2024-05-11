@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] PlayerController player;
+    [SerializeField] Slider damageIndicatorBar;
     Slider slider;  
     void Start()
     {
@@ -16,5 +17,11 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         slider.value = (float)player.currentHealth / player.maxHealth;
+        
+        if(damageIndicatorBar.value > slider.value)
+            damageIndicatorBar.value -= Time.deltaTime * 0.1f;
+
+        if(damageIndicatorBar.value < slider.value)
+            damageIndicatorBar.value = slider.value;
     }
 }
