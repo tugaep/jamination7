@@ -7,10 +7,8 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] bool onLayer1 = false;
 
     public GameObject meleeEnemy;
-
     public GameObject rangedEnemy;
     
-
     public PlayerController playerController;
 
     float coolDown = 5f;
@@ -18,7 +16,7 @@ public class EnemySpawn : MonoBehaviour
     public void spawnEnemy()
     {
 
-        Vector2 spawnPoint = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * 8.5f + (Vector2)transform.position;
+        Vector2 spawnPoint = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * 11.5f + (Vector2)transform.position;
         if(Random.Range(0,2) == 0)
         { 
             MeleeEnemy enemy = Instantiate(meleeEnemy, spawnPoint, Quaternion.identity).GetComponent<MeleeEnemy>();

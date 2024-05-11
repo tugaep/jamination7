@@ -16,7 +16,7 @@ public class GemSpawner : MonoBehaviour
 
     public void spawnGem()
     {
-        Vector2 spawnPoint = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * 8.5f + (Vector2)transform.position;
+        Vector2 spawnPoint = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * 11.5f + (Vector2)transform.position;
         int random = Random.Range(0, 3);
 
         if(random == 0)

@@ -22,6 +22,6 @@ public class MeleeEnemy : Enemy
 
         // Sprite Changing
         if(enemyActive)
-            renderer.sprite = flySprites[ 4 - Mathf.RoundToInt(Vector2.SignedAngle(Vector2.right, targetPlayer.transform.position - transform.position) / 45)];
+            renderer.sprite = flySprites[Mathf.Clamp(4 - Mathf.RoundToInt(Vector2.SignedAngle(Vector2.right, targetPlayer.transform.position - transform.position) / 45), 0, 7)];
     }
 }
