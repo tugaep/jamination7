@@ -13,6 +13,7 @@ public class Enemy : ColorfulObject
     [SerializeField] float EnemySpeed = 1f;
     [SerializeField] int maxHealth = 100;
 
+    Animator animator;
     Rigidbody2D rb2;
     Collider2D col;
     int currentHealth;
@@ -21,6 +22,7 @@ public class Enemy : ColorfulObject
     {
         rb2 = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
         currentHealth = maxHealth;
 
         this.targetPlayer = targetPlayer;
@@ -28,14 +30,22 @@ public class Enemy : ColorfulObject
         if(onLayer1)
         {
             objectOnLayer1 = true;
-            gameObject.layer = 7;
             rb2.excludeLayers = 0b1000000;
+
+            foreach (Transform child in transform)
+            {
+                child.gameObject.layer = 7;
+            }
         }
         else
         {
             objectOnLayer1 = false;
-            gameObject.layer = 6;
             rb2.excludeLayers = 0b0100000;
+
+            foreach (Transform child in transform)
+            {
+                child.gameObject.layer = 6;
+            }
         }
 
         // Random Color
@@ -72,10 +82,12 @@ public class Enemy : ColorfulObject
                 moveDirection *= -1;
 
             rb2.velocity = moveDirection.normalized * EnemySpeed;
+            if(animator) animator.speed = 1;
         }
         else
         {
             rb2.velocity = Vector3.zero;
+            if (animator) animator.speed = 0;
         }
     }
 

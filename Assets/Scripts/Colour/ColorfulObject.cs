@@ -19,7 +19,7 @@ public class ColorfulObject : MonoBehaviour
     public virtual void Start()
     {
         colorManager = ColorManager.instance;
-        renderer = GetComponent<SpriteRenderer>();
+        renderer = GetComponentInChildren<SpriteRenderer>();
 
         ColorManager.instance.onColorChanged += ColorChanged;
     }
@@ -31,9 +31,9 @@ public class ColorfulObject : MonoBehaviour
 
     public virtual void ColorChanged()
     {
-        desiredColor = new Color((colorManager.layer0Red != objectOnLayer1) && colorRed ? 1 : 0,
-                                    (colorManager.layer0Green != objectOnLayer1) && colorGreen ? 1 : 0,
-                                    (colorManager.layer0Blue != objectOnLayer1) && colorBlue ? 1 : 0);
+        desiredColor = new Color((colorManager.layer0Red != objectOnLayer1) && colorRed ? 1 : 0.5f,
+                                    (colorManager.layer0Green != objectOnLayer1) && colorGreen ? 1 : 0.5f,
+                                    (colorManager.layer0Blue != objectOnLayer1) && colorBlue ? 1 : 0.5f);
 
         objectVisible = ((colorManager.layer0Red != objectOnLayer1) && !colorRed) ||
                         ((colorManager.layer0Green != objectOnLayer1) && !colorGreen) ||

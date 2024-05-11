@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
+    [SerializeField] Sprite[] flySprites;
     float nextAttackTime = 0;
 
     public override void Update()
@@ -18,5 +19,9 @@ public class MeleeEnemy : Enemy
             targetPlayer.TakeDamage(damageAmount);
             nextAttackTime = Time.time + attackCooldown;
         }
+
+        // Sprite Changing
+        if(enemyActive)
+            renderer.sprite = flySprites[ 4 - Mathf.RoundToInt(Vector2.SignedAngle(Vector2.right, targetPlayer.transform.position - transform.position) / 45)];
     }
 }

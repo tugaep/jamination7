@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator IncreaseSpeed()
     {
-        playerSpeed += 10;
+        playerSpeed += 1;
 
         yield return new WaitForSeconds(5);
 
-        playerSpeed -= 10;
+        playerSpeed -= 1;
     }
 
 
@@ -86,8 +86,8 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator attackSpeedModifiy()
     {
-        attackSpeed = attackSpeed / 2.5f;
+        attackSpeed /= 1.25f;
         yield return new WaitForSeconds(5);
-        attackSpeed = attackSpeed * 2.5f;
+        attackSpeed *=  1.25f;
     }
 }
