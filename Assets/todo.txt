@@ -1,0 +1,18 @@
+Renk sistemi
+> Düşmanların göz
+> Nesneler
+
+Oyuncu
+> Saldırmak
+> Renk değiştirmek
+> Can sistemi
+
+Ana oyun döngüsü
+> Oyun sonu ekranı
+
+Map Generation??
+
+Düşmanlar
+> Düşman hareket sistemi
+> 
+
