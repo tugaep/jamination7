@@ -74,9 +74,11 @@ public class ColorSwitcher : MonoBehaviour
     // This code is awful for maintability but i am too lazy to change
     void ColorSwitchingUpdate()
     {
+        int colorsOnLayer0 = (colorManager.layer0Red ? 1 : 0) + (colorManager.layer0Green ? 1 : 0) + (colorManager.layer0Blue ? 1 : 0);
+
         // Player 1 Color Stealing
         #region PLAYER1
-        if (Input.GetButton("P1Steal") && p1LightPointer == -1 && player1Cooldown < 0)
+        if (colorsOnLayer0 == 1 && Input.GetButton("P1Steal") && p1LightPointer == -1 && player1Cooldown < 0)
         {
             // When button is pressed, start pointing a color
 
@@ -126,7 +128,7 @@ public class ColorSwitcher : MonoBehaviour
 
         // Player 2 Color Stealing(same as the upper one)
         #region PLAYER2
-        if (Input.GetButton("P2Steal") && p2LightPointer == -1 && player2Cooldown < 0)
+        if (colorsOnLayer0 == 2 && Input.GetButton("P2Steal") && p2LightPointer == -1 && player2Cooldown < 0)
         {
             // When button is pressed, start pointing a color
 

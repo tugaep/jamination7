@@ -31,9 +31,9 @@ public class ColorfulObject : MonoBehaviour
 
     public virtual void ColorChanged()
     {
-        desiredColor = new Color((colorManager.layer0Red && colorRed) != objectOnLayer1 ? 1 : 0,
-                                    (colorManager.layer0Green && colorGreen) != objectOnLayer1 ? 1 : 0,
-                                    (colorManager.layer0Blue && colorBlue) != objectOnLayer1 ? 1 : 0);
+        desiredColor = new Color((colorManager.layer0Red != objectOnLayer1) && colorRed ? 1 : 0,
+                                    (colorManager.layer0Green != objectOnLayer1) && colorGreen ? 1 : 0,
+                                    (colorManager.layer0Blue != objectOnLayer1) && colorBlue ? 1 : 0);
 
         objectVisible = ((colorManager.layer0Red != objectOnLayer1) && !colorRed) ||
                         ((colorManager.layer0Green != objectOnLayer1) && !colorGreen) ||

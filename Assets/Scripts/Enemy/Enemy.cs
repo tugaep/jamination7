@@ -9,15 +9,18 @@ public class Enemy : ColorfulObject
     public float attackRange = 1f;
 
     [HideInInspector] public PlayerController targetPlayer;
+    [HideInInspector] public bool enemyActive = true;
     [SerializeField] float EnemySpeed = 1f;
     [SerializeField] int maxHealth = 100;
 
     Rigidbody2D rb2;
+    Collider2D col;
     int currentHealth;
 
     public virtual void Init(PlayerController targetPlayer, bool onLayer1 = false)
     {
         rb2 = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         currentHealth = maxHealth;
 
         this.targetPlayer = targetPlayer;
@@ -61,13 +64,19 @@ public class Enemy : ColorfulObject
     {
         base.Update();
 
-        Vector3 moveDirection = (targetPlayer.transform.position - transform.position);
+        if(enemyActive)
+        {
+            Vector3 moveDirection = (targetPlayer.transform.position - transform.position);
 
-        if (moveDirection.magnitude < attackRange - 1)
-            moveDirection *= -1;
+            if (moveDirection.magnitude < attackRange - 1)
+                moveDirection *= -1;
 
-        rb2.velocity = moveDirection.normalized * EnemySpeed;
-
+            rb2.velocity = moveDirection.normalized * EnemySpeed;
+        }
+        else
+        {
+            rb2.velocity = Vector3.zero;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -85,6 +94,7 @@ public class Enemy : ColorfulObject
     {
         base.ColorChanged();
 
-        gameObject.SetActive(objectVisible);
+        col.enabled = objectVisible;
+        enemyActive = objectVisible;
     }
 }

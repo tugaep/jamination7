@@ -17,19 +17,19 @@ public class RangedEnemy : Enemy
     {
         base.Update();
 
-        
-        if (attackCooldown < 0 && Vector3.Distance(targetPlayer.transform.position, transform.position) < attackRange)
+        if(enemyActive)
         {
-            facingDirection = (targetPlayer.transform.position - transform.position).normalized;
+            if (attackCooldown < 0 && Vector3.Distance(targetPlayer.transform.position, transform.position) < attackRange)
+            {
+                facingDirection = (targetPlayer.transform.position - transform.position).normalized;
 
-            GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
-            bullet.GetComponent<EnemyBullet>().Init(facingDirection, objectOnLayer1);
+                GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
+                bullet.GetComponent<EnemyBullet>().Init(facingDirection, objectOnLayer1);
 
-            attackCooldown = attackCooldownNew;
-            print("SSASASASA");
+                attackCooldown = attackCooldownNew;
+                print("SSASASASA");
+            }
+            attackCooldown -= Time.deltaTime;
         }
-        attackCooldown -= Time.deltaTime;
-
-
     }
 }

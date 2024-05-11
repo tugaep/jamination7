@@ -11,7 +11,7 @@ public class MeleeEnemy : Enemy
         base.Update();
 
         // Attacking
-        if (Time.time > nextAttackTime && Vector3.Distance(targetPlayer.transform.position, transform.position) < attackRange)
+        if (enemyActive && Time.time > nextAttackTime && Vector3.Distance(targetPlayer.transform.position, transform.position) < attackRange)
         {
             // If the player is in attack range, lower its health
 
