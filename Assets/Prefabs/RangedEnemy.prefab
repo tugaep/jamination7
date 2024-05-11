@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7015178288172983180}
   - component: {fileID: 4300196640202492318}
-  - component: {fileID: 2715126979021148064}
+  - component: {fileID: 6047223142123580848}
   - component: {fileID: 8155720535177741023}
   - component: {fileID: 9175860835019156245}
   m_Layer: 0
-  m_Name: MeleeEnemy 1
+  m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2715126979021148064
+--- !u!114 &6047223142123580848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,20 +96,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 577505034493336760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10149ab8586e9834a8abe637ca47e471, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fcfd340dfa6b40d4b9b80bab11fc008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectOnLayer1: 0
+  objectOnLayer1: 1
   colorRed: 1
   colorGreen: 1
   colorBlue: 1
   objectVisible: 0
-  targetPlayer: {fileID: 0}
   damageAmount: 10
   attackCooldown: 1
   attackRange: 1
-  EnemySpeed: 1
-  maxHealth: 100
+  targetPlayer: {fileID: 0}
+  EnemySpeed: 0.6
+  maxHealth: 60
+  bulletPrefab: {fileID: 5054069694760190667, guid: 2cb1976cf7f2049b7bb9016e78280cd5, type: 3}
+  attackCooldownNew: 1
 --- !u!50 &8155720535177741023
 Rigidbody2D:
   serializedVersion: 4

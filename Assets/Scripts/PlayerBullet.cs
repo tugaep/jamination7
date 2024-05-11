@@ -54,6 +54,6 @@ public class PlayerBullet : MonoBehaviour
 
         Destroy(gameObject);
 
-        Instantiate(bulletHitParticles, transform.position, Quaternion.identity);
+        Instantiate(bulletHitParticles, transform.position, Quaternion.identity).layer = gameObject.layer;
     }
 }
