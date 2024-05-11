@@ -13,7 +13,7 @@ public class ColorSwitcher : MonoBehaviour
     [SerializeField] Image cooldownIcon;
 
     ColorManager colorManager;
-    const float cooldown = 4f;
+    const float cooldown = 2f;
 
     float switchCooldown = 0f;
 

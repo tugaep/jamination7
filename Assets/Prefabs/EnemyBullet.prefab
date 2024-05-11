@@ -162,5 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletHitParticles: {fileID: 2863459116032016324, guid: aeaf6afe85dd6dc4983c807ed8f33aca, type: 3}
-  damage: 20
+  damage: 7
   bulletSpeed: 6

@@ -138,8 +138,8 @@ MonoBehaviour:
   colorBlue: 1
   renderer: {fileID: 0}
   objectVisible: 0
-  damageAmount: 10
-  attackCooldown: 1
+  damageAmount: 1
+  attackCooldown: 0.3
   attackRange: 1
   targetPlayer: {fileID: 0}
   enemyActive: 1

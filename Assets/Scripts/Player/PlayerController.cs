@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public bool playerActive = true;
+
     [SerializeField] PlayerTongueAttack tongue;
     [SerializeField] GameObject bulletPrefab;
 
@@ -37,26 +39,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Player Movement
-        float axisHorizontal = Input.GetAxis(axisHorName);
-        float axisVertical = Input.GetAxis(axisVertName);
-
-        Vector3 direction = new Vector2(axisHorizontal, axisVertical);
-        rb2.velocity = direction.normalized * playerSpeed;
-
-        if(direction.sqrMagnitude > 0)
-            facingDirection = direction.normalized;
-
-        // Player Attacking
-        attackCooldown -= Time.deltaTime;
-        if (Input.GetButtonDown(inputAttackName) && attackCooldown < 0)
+        if(playerActive)
         {
-            /*GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
-            bullet.GetComponent<PlayerBullet>().Init(facingDirection * playerSpeed / 3, playerLayer == 1);
+            // Player Movement
+            float axisHorizontal = Input.GetAxis(axisHorName);
+            float axisVertical = Input.GetAxis(axisVertName);
 
-            attackCooldown = attackSpeed;*/
+            Vector3 direction = new Vector2(axisHorizontal, axisVertical);
+            rb2.velocity = direction.normalized * playerSpeed;
 
-            tongue.AttackDirection(facingDirection);
+            if (direction.sqrMagnitude > 0)
+                facingDirection = direction.normalized;
+
+            // Player Attacking
+            attackCooldown -= Time.deltaTime;
+            if (Input.GetButtonDown(inputAttackName) && attackCooldown < 0)
+            {
+                /*GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
+                bullet.GetComponent<PlayerBullet>().Init(facingDirection * playerSpeed / 3, playerLayer == 1);
+
+                attackCooldown = attackSpeed;*/
+
+                tongue.AttackDirection(facingDirection);
+            }
         }
     }
 
@@ -65,7 +70,14 @@ public class PlayerController : MonoBehaviour
         currentHealth -= amount;
         if(currentHealth <= 0)
         {
-            Debug.Log("Player has died.");
+            if(playerActive)
+            {
+                FindObjectOfType<GameOverSequence>().TerminateGame(playerLayer == 1);
+            }
+
+            rb2.velocity = Vector2.zero;
+            playerActive = false;
+
         }
     }
 

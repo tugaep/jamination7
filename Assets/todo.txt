@@ -1,6 +1,4 @@
 Engeller
 Haritanın rastgele engellerle donatılması
-Giriş ekranı
 Ölme
 Farklı şekilde saldıran düşmanlar
-Dil atma
