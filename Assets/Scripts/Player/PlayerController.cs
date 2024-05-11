@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    [SerializeField] PlayerTongueAttack tongue;
     [SerializeField] GameObject bulletPrefab;
 
     Rigidbody2D rb2;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     float attackCooldown = 0f;
 
-    float attackSpeed = 0.25f;
+    float attackSpeed = 0.5f;
    
     void Start()
     {
@@ -48,12 +49,14 @@ public class PlayerController : MonoBehaviour
 
         // Player Attacking
         attackCooldown -= Time.deltaTime;
-        if (Input.GetButton(inputAttackName) && attackCooldown < 0)
+        if (Input.GetButtonDown(inputAttackName) && attackCooldown < 0)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
+            /*GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
             bullet.GetComponent<PlayerBullet>().Init(facingDirection * playerSpeed / 3, playerLayer == 1);
 
-            attackCooldown = attackSpeed;
+            attackCooldown = attackSpeed;*/
+
+            tongue.AttackDirection(facingDirection);
         }
     }
 
@@ -74,7 +77,6 @@ public class PlayerController : MonoBehaviour
 
         playerSpeed -= 0.5f;
     }
-
 
     public void Heal()
     {

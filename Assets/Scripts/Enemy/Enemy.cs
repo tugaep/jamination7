@@ -32,6 +32,7 @@ public class Enemy : ColorfulObject
             objectOnLayer1 = true;
             rb2.excludeLayers = 0b1000000;
 
+            gameObject.layer = 7;
             foreach (Transform child in transform)
             {
                 child.gameObject.layer = 7;
@@ -42,6 +43,7 @@ public class Enemy : ColorfulObject
             objectOnLayer1 = false;
             rb2.excludeLayers = 0b0100000;
 
+            gameObject.layer = 6;
             foreach (Transform child in transform)
             {
                 child.gameObject.layer = 6;
