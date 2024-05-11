@@ -309,17 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96aa59b118b2b9143b7cf00567343866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectOnLayer1: 0
-  colorRed: 1
-  colorGreen: 1
-  colorBlue: 1
-  colorManager: {fileID: 0}
-  renderer: {fileID: 0}
-  desiredColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
 --- !u!61 &601556205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -647,6 +636,7 @@ MonoBehaviour:
   colorRed: 1
   colorGreen: 1
   colorBlue: 0
+  objectVisible: 0
 --- !u!1 &949500009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +999,7 @@ MonoBehaviour:
   colorRed: 1
   colorGreen: 1
   colorBlue: 1
+  objectVisible: 0
 --- !u!212 &1216891153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1177,6 +1168,7 @@ MonoBehaviour:
   colorRed: 1
   colorGreen: 1
   colorBlue: 1
+  objectVisible: 0
 --- !u!1 &1627243027
 GameObject:
   m_ObjectHideFlags: 0
