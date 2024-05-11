@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     string inputAttackName;
 
     float attackCooldown = 0f;
+
+    float attackSpeed = 0.25f;
    
     void Start()
     {
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
             bullet.GetComponent<PlayerBullet>().Init(facingDirection, playerLayer == 1);
 
-            attackCooldown = 0.1f;
+            attackCooldown = attackSpeed;
         }
     }
 
@@ -62,5 +64,30 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player has died.");
         }
+    }
+
+    public IEnumerator IncreaseSpeed()
+    {
+        playerSpeed += 10;
+
+        yield return new WaitForSeconds(5);
+
+        playerSpeed -= 10;
+    }
+
+
+    public void Heal()
+    {
+        currentHealth += 10;
+        if (currentHealth > 100)
+        {
+            currentHealth = 100;
+        } 
+    }
+    public IEnumerator attackSpeedModifiy()
+    {
+        attackSpeed = attackSpeed / 2.5f;
+        yield return new WaitForSeconds(5);
+        attackSpeed = attackSpeed * 2.5f;
     }
 }
