@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int playerLayer = 0;
     [SerializeField] float playerSpeed = 1.0f;
 
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int currentHealth;
+    public int maxHealth = 100;
+    public int currentHealth;
 
     [SerializeField] GameObject bulletPrefab;
 
