@@ -96,5 +96,7 @@ public class Enemy : ColorfulObject
 
         col.enabled = objectVisible;
         enemyActive = objectVisible;
+
+        renderer.sortingOrder = (objectVisible ? 5 : 4);
     }
 }

@@ -11,7 +11,7 @@ public class ColorfulObject : MonoBehaviour
     public bool colorBlue = true;
 
     ColorManager colorManager;
-    SpriteRenderer renderer;
+    [HideInInspector] public SpriteRenderer renderer;
 
     Color desiredColor = Color.white;
     public bool objectVisible = false;
