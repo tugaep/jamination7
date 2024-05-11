@@ -63,7 +63,7 @@ public class Enemy : ColorfulObject
 
         Vector3 moveDirection = (targetPlayer.transform.position - transform.position);
 
-        if (moveDirection.magnitude < attackRange)
+        if (moveDirection.magnitude < attackRange - 1)
             moveDirection *= -1;
 
         rb2.velocity = moveDirection.normalized * EnemySpeed;
