@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    Transform target;
+    public Transform target;
 
 
     private void Update()

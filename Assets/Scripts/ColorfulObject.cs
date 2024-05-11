@@ -14,7 +14,7 @@ public class ColorfulObject : MonoBehaviour
     SpriteRenderer renderer;
 
     Color desiredColor = Color.white;
-    bool objectVisible = false;
+    public bool objectVisible = false;
 
     private void Start()
     {
@@ -35,6 +35,8 @@ public class ColorfulObject : MonoBehaviour
                                     (colorManager.layer0Green && colorGreen) != objectOnLayer1 ? 1 : 0,
                                     (colorManager.layer0Blue && colorBlue) != objectOnLayer1 ? 1 : 0);
 
-        objectVisible = (colorManager.layer0Red == colorRed) && (colorManager.layer0Green == colorGreen) && (colorManager.layer0Blue == colorBlue);
+        objectVisible = ((colorManager.layer0Red != objectOnLayer1) != colorRed) ||
+                        ((colorManager.layer0Green != objectOnLayer1) != colorGreen) ||
+                        ((colorManager.layer0Blue != objectOnLayer1) != colorBlue);
     }
 }
