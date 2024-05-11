@@ -26,14 +26,35 @@ public class Enemy : ColorfulObject
         {
             objectOnLayer1 = true;
             gameObject.layer = 7;
-            rb2.excludeLayers = rb2.excludeLayers & 0b0111111;
+            rb2.excludeLayers = 0b1000000;
         }
         else
         {
             objectOnLayer1 = false;
             gameObject.layer = 6;
-            rb2.excludeLayers = rb2.excludeLayers & 0b1011111;
+            rb2.excludeLayers = 0b0100000;
         }
+
+        // Random Color
+        switch(Random.Range(0, 3))
+        {
+            case 0:
+                colorRed = false;
+                break;
+            case 1:
+                colorGreen = false; 
+                break;
+            case 2:
+                colorBlue = false;
+                break;
+        }
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
+        ColorChanged();
     }
 
     public override void Update()

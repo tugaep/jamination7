@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         float axisVertical = Input.GetAxis(axisVertName);
 
         Vector3 direction = new Vector2(axisHorizontal, axisVertical);
-        rb2.velocity = direction * playerSpeed;
+        rb2.velocity = direction.normalized * playerSpeed;
 
         if(direction.sqrMagnitude > 0)
             facingDirection = direction.normalized;

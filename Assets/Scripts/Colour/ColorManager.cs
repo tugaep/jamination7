@@ -16,15 +16,6 @@ public class ColorManager : MonoBehaviour
         onColorChanged.Invoke();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            ChangeLightPosition(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            ChangeLightPosition(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            ChangeLightPosition(2);
-    }
 
     /// <summary>
     /// Moves the light source from a scene to the other

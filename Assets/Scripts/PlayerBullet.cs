@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
+    [SerializeField] GameObject bulletHitParticles;
     [SerializeField] int damage = 20;
     [SerializeField] float bulletSpeed = 6f;
 
@@ -22,15 +23,14 @@ public class PlayerBullet : MonoBehaviour
         if(onLayer1)
         {
             gameObject.layer = 7;
-            rb2.excludeLayers = rb2.excludeLayers & 0b0111111;
+            rb2.excludeLayers = 0b1000000;
         }
         else
         {
             gameObject.layer = 6;
-            rb2.excludeLayers = rb2.excludeLayers & 0b1011111;
+            rb2.excludeLayers = 0b0100000;
         }
     }
-
 
     private void Update()
     {
@@ -53,5 +53,7 @@ public class PlayerBullet : MonoBehaviour
         }
 
         Destroy(gameObject);
+
+        Instantiate(bulletHitParticles, transform.position, Quaternion.identity);
     }
 }
