@@ -10,15 +10,8 @@ public class RangedEnemy : Enemy
     [SerializeField]float  attackCooldownNew = 1f;
     Vector3 facingDirection = Vector3.right;
 
-    Animator animator;
     int prevDirection = -1;
 
-    public override void Start()
-    {
-        base.Start();
-
-        animator = GetComponent<Animator>();
-    }
 
     public override void Update()
     {

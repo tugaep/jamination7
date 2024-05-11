@@ -9,11 +9,11 @@ public class Enemy : ColorfulObject
     public float attackRange = 1f;
 
     [HideInInspector] public PlayerController targetPlayer;
+    [HideInInspector] public Animator animator;
     [HideInInspector] public bool enemyActive = true;
     [SerializeField] float EnemySpeed = 1f;
     [SerializeField] int maxHealth = 100;
 
-    Animator animator;
     Rigidbody2D rb2;
     Collider2D col;
     int currentHealth;
