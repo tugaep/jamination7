@@ -11,7 +11,7 @@ public class EnemySpawn : MonoBehaviour
     
     public PlayerController playerController;
 
-    float coolDown = 5f;
+    float coolDown = 2f;
 
     public void spawnEnemy()
     {

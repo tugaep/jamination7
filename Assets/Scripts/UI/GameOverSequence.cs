@@ -53,12 +53,12 @@ public class GameOverSequence : MonoBehaviour
         RawImage growingImg = player1Win ? player1View : player2View;
         for (float t = 2; t > 0; t -= Time.unscaledDeltaTime)
         {
-            fadingImg.color = new Color(t / 2, t / 2, t / 2, 1);
+            fadingImg.color = new Color(t / 2, t / 2, t / 2, t / 2);
 
             if(t < 1)
             {
                 Vector3 imgPos = growingImg.rectTransform.localPosition;
-                imgPos.x *= 1 - Time.deltaTime * 2;
+                imgPos.x = Mathf.Sign(imgPos.x) * (1 - t) * 270;
                 growingImg.rectTransform.localPosition = imgPos;
 
                 growingImg.transform.localScale = Vector3.one * (2 - t);
@@ -70,7 +70,7 @@ public class GameOverSequence : MonoBehaviour
         Time.timeScale = 0;
 
         string winnerName = player1Win ? new PlayerNames().GetNames().Item1 : new PlayerNames().GetNames().Item2;
-        gameOverText.text = winnerName.ToUpper() + " IS NOW THE POSSESSOR OF ALL THE COLORS FROM NOW ON!";
+        gameOverText.text = winnerName.ToUpper() + " IS THE POSSESSOR OF ALL THE COLORS FROM NOW ON!";
         for(float t = 0; t < 1; t += Time.unscaledDeltaTime)
         {
             gameOverText.color = new Color(1, 1, 1, t);

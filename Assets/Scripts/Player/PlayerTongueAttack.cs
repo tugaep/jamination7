@@ -7,6 +7,7 @@ public class PlayerTongueAttack : MonoBehaviour
     public int damage = 20;
     public int layer = 0;
 
+    [SerializeField] GameObject tongueParticles;
     SpriteRenderer renderer;
 
     void Start()
@@ -31,7 +32,7 @@ public class PlayerTongueAttack : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             float enmDistance = Vector3.Distance(enemy.transform.position, transform.position);
-            if ((enemy.gameObject.layer == layer + 6) && Vector3.Dot((enemy.transform.position - transform.position).normalized, direction) > 0.95f && enmDistance < nearestDistance && enemy.enemyActive)
+            if ((enemy.gameObject.layer == layer + 6) && Vector3.Dot((enemy.transform.position - transform.position).normalized, direction) > 0.9f && enmDistance < nearestDistance && enemy.enemyActive)
             {
                 nearestDistance = enmDistance;
                 nearestEnemy = enemy;
@@ -44,6 +45,9 @@ public class PlayerTongueAttack : MonoBehaviour
 
             transform.right = nearestEnemy.transform.position - transform.position;
             renderer.size = new Vector3(nearestDistance, 0.25f);
+
+            // weird particles
+            Instantiate(tongueParticles, nearestEnemy.transform.position, Quaternion.identity).GetComponent<ParticleSystem>().startColor = nearestEnemy.renderer.color;
         }
         else
         {
