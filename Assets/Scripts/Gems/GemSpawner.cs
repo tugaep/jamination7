@@ -31,7 +31,7 @@ public class GemSpawner : MonoBehaviour
         }
         else
         {
-            HealthGem gem = Instantiate(attackGem, spawnPoint, Quaternion.identity).GetComponent<HealthGem>();
+            HealthGem gem = Instantiate(healGem, spawnPoint, Quaternion.identity).GetComponent<HealthGem>();
             gem.Init(onLayer1);
         }
     }

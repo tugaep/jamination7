@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2091504782547062164}
   - component: {fileID: 390705583679499455}
   - component: {fileID: 3454817545887355143}
+  - component: {fileID: -3130910501702335395}
   m_Layer: 0
-  m_Name: SpeedGem
+  m_Name: HealGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b2ac48a6ed9e854f95aeebe406d1793, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41e2a7de59ca2b140b22cf7ffc33f418, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,3 +168,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-3130910501702335395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622239976034698473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047e7d433b6f54763a84a8f1ad122c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectOnLayer1: 1
+  colorRed: 1
+  colorGreen: 1
+  colorBlue: 1
+  renderer: {fileID: 0}
+  objectVisible: 0
