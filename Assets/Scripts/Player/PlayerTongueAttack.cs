@@ -47,11 +47,17 @@ public class PlayerTongueAttack : MonoBehaviour
             renderer.size = new Vector3(nearestDistance, 0.25f);
 
             // weird particles
-            Instantiate(tongueParticles, nearestEnemy.transform.position, Quaternion.identity).GetComponent<ParticleSystem>().startColor = nearestEnemy.renderer.color;
+            GameObject obj = Instantiate(tongueParticles, nearestEnemy.transform.position, Quaternion.identity);
+            obj.GetComponent<ParticleSystem>().startColor = nearestEnemy.renderer.color;
+            obj.layer = gameObject.layer;
+
+            SfxPlayer.instance.PlaySound("lick_hit");
         }
         else
         {
             renderer.size = new Vector3(4, 0.25f);
+
+            SfxPlayer.instance.PlaySound("lick");
         }
 
         yield return new WaitForSeconds(0.1f);

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Gem : ColorfulObject
 {
-    
+    [SerializeField] GameObject eatParticles;
     GameObject gem;
     
 
@@ -20,6 +21,18 @@ public class Gem : ColorfulObject
             gameObject.layer = 6;
             GetComponent<Rigidbody2D>().excludeLayers = 0b0100000;
         }
+
+        // Random color
+        int randomColor = Random.Range(1, 8);
+        colorRed = (randomColor & 0b100) == 0b100;
+        colorGreen = (randomColor & 0b010) == 0b010;
+        colorBlue = (randomColor & 0b001) == 0b001;
+    }
+    public override void Start()
+    {
+        base.Start();
+
+        ColorChanged();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -28,6 +41,11 @@ public class Gem : ColorfulObject
         {
             Collected(player);
             Destroy(gameObject);
+
+            // Particles
+            GameObject obj = Instantiate(eatParticles, transform.position, Quaternion.identity);
+            obj.layer = gameObject.layer;
+            obj.GetComponent<ParticleSystem>().startColor = renderer.color;
         }
     }
 

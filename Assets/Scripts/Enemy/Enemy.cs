@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Enemy : ColorfulObject
@@ -31,7 +32,7 @@ public class Enemy : ColorfulObject
         if(onLayer1)
         {
             objectOnLayer1 = true;
-            rb2.excludeLayers = 0b10000000;
+            rb2.excludeLayers = 0b01000000;
 
             gameObject.layer = 7;
             foreach (Transform child in transform)
@@ -42,7 +43,7 @@ public class Enemy : ColorfulObject
         else
         {
             objectOnLayer1 = false;
-            rb2.excludeLayers = 0b01000000;
+            rb2.excludeLayers = 0b10000000;
 
             gameObject.layer = 6;
             foreach (Transform child in transform)
@@ -51,19 +52,11 @@ public class Enemy : ColorfulObject
             }
         }
 
-        // Random Color
-        switch(Random.Range(0, 3))
-        {
-            case 0:
-                colorRed = false;
-                break;
-            case 1:
-                colorGreen = false; 
-                break;
-            case 2:
-                colorBlue = false;
-                break;
-        }
+        // Random Main Color
+        int randomColor = Random.Range(1, 8);
+        colorRed = (randomColor & 0b100) == 0b100;
+        colorGreen = (randomColor & 0b010) == 0b010;
+        colorBlue = (randomColor & 0b001) == 0b001;
     }
 
     public override void Start()
@@ -99,12 +92,17 @@ public class Enemy : ColorfulObject
         currentHealth -= amount;
         if(currentHealth <= 0)
         {
-            Destroy(gameObject);
-
-            ColorManager.instance.onColorChanged -= ColorChanged;
-
-            Instantiate(dustParticles, transform.position, Quaternion.identity);
+            Die();
         }
+    }
+
+    public virtual void Die()
+    {
+        Destroy(gameObject);
+
+        ColorManager.instance.onColorChanged -= ColorChanged;
+
+        Instantiate(dustParticles, transform.position, Quaternion.identity).layer = objectOnLayer1 ? 7 : 6;
     }
 
     public override void ColorChanged()

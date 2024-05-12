@@ -49,19 +49,30 @@ public class GameOverSequence : MonoBehaviour
         }
         colorManager.onColorChanged.Invoke();
 
+        // Killing all enemies and disabling spawning
+        var enemySpawners = FindObjectsOfType<EnemySpawn>();
+        enemySpawners[0].keepSpawning = false;
+        enemySpawners[1].keepSpawning = false;
+
+        var enemies = FindObjectsOfType<Enemy>();
+        foreach(Enemy enemy in enemies)
+        {
+            enemy.Die();
+        }
+
+        // Fading the loser player's view
         RawImage fadingImg = player1Win ? player2View : player1View;
         RawImage growingImg = player1Win ? player1View : player2View;
-        for (float t = 2; t > 0; t -= Time.unscaledDeltaTime)
+        for (float t = 5; t > 0; t -= Time.unscaledDeltaTime)
         {
-            fadingImg.color = new Color(t / 2, t / 2, t / 2, t / 2);
+            fadingImg.color = new Color(t / 5, t / 5, t / 5, t / 5);
 
-            if(t < 1)
+            if(t < 3)
             {
                 Vector3 imgPos = growingImg.rectTransform.localPosition;
-                imgPos.x = Mathf.Sign(imgPos.x) * (1 - t) * 270;
-                growingImg.rectTransform.localPosition = imgPos;
+                growingImg.rectTransform.localPosition *= 1 - (Time.unscaledDeltaTime * 10);
 
-                growingImg.transform.localScale = Vector3.one * (2 - t);
+                growingImg.transform.localScale = Vector3.one * ((6 - t) / 3);
             }
 
             yield return null;
@@ -73,7 +84,7 @@ public class GameOverSequence : MonoBehaviour
         gameOverText.text = winnerName.ToUpper() + " IS THE POSSESSOR OF ALL THE COLORS FROM NOW ON!";
         for(float t = 0; t < 1; t += Time.unscaledDeltaTime)
         {
-            gameOverText.color = new Color(1, 1, 1, t);
+            gameOverText.color = new Color(0, 0, 0, t);
             yield return null;
         }
 

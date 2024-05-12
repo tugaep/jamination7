@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class ColorfulObject : MonoBehaviour
 {
+    [SerializeField] bool ignoreAlpha = false;
+
     public bool objectOnLayer1 = true;
     public bool colorRed = true;
     public bool colorGreen = true;
@@ -31,12 +33,13 @@ public class ColorfulObject : MonoBehaviour
 
     public virtual void ColorChanged()
     {
-        desiredColor = new Color((colorManager.layer0Red != objectOnLayer1) && colorRed ? 1 : 0.5f,
-                                    (colorManager.layer0Green != objectOnLayer1) && colorGreen ? 1 : 0.5f,
-                                    (colorManager.layer0Blue != objectOnLayer1) && colorBlue ? 1 : 0.5f);
-
         objectVisible = ((colorManager.layer0Red != objectOnLayer1) && !colorRed) ||
                         ((colorManager.layer0Green != objectOnLayer1) && !colorGreen) ||
                         ((colorManager.layer0Blue != objectOnLayer1) && !colorBlue);
+
+        desiredColor = new Color((colorManager.layer0Red != objectOnLayer1) && colorRed ? 1 : 0.5f,
+                                    (colorManager.layer0Green != objectOnLayer1) && colorGreen ? 1 : 0.5f,
+                                    (colorManager.layer0Blue != objectOnLayer1) && colorBlue ? 1 : 0.5f,
+                                    ignoreAlpha || objectVisible ? 1 : 0.3f);
     }
 }

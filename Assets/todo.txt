@@ -1,4 +1,6 @@
-Engeller
-Haritanın rastgele engellerle donatılması
-Ölme
-Farklı şekilde saldıran düşmanlar
+Sesler:
+> Akrep idle
+> Akrep saldırı
+> Akrep mermisi temas
+> Kaybetme
+> Renk değiştirme

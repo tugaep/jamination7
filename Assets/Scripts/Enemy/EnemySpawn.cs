@@ -6,12 +6,14 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] bool onLayer1 = false;
 
+    public bool keepSpawning = true;
+
     public GameObject meleeEnemy;
     public GameObject rangedEnemy;
     
     public PlayerController playerController;
 
-    float coolDown = 2f;
+    float coolDown = 1f;
 
     public void spawnEnemy()
     {
@@ -31,7 +33,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void Update()
     {
-        if (coolDown < 0f)
+        if (coolDown < 0f && keepSpawning)
         {
             spawnEnemy();
             coolDown = 5f;

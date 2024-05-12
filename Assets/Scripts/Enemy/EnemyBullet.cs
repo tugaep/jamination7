@@ -47,7 +47,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(damage, transform.position);
         }
 
         Destroy(gameObject);

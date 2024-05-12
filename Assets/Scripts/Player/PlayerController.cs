@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] PlayerTongueAttack tongue;
     [SerializeField] GameObject bulletPrefab;
+
+    [SerializeField] GameObject effectSpeed;
+    [SerializeField] GameObject effectHeal;
+    [SerializeField] GameObject effectAttack;
 
     Rigidbody2D rb2;
     Vector3 facingDirection = Vector3.right;
@@ -48,6 +54,9 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = new Vector2(axisHorizontal, axisVertical);
             rb2.velocity = direction.normalized * playerSpeed;
 
+            // Clamping Player Position
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -30, 30), Mathf.Clamp(transform.position.y, -30, 30), 0);
+
             if (direction.sqrMagnitude > 0)
                 facingDirection = direction.normalized;
 
@@ -65,8 +74,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, Vector3? damageSource = null)
     {
+        // Knockback
+        if (damageSource != null)
+            rb2.position += (Vector2)(transform.position - damageSource.Value).normalized;
+
+        // Damaging
         currentHealth -= amount;
         if(currentHealth <= 0)
         {
@@ -83,25 +97,34 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator IncreaseSpeed()
     {
-        playerSpeed += 0.5f;
+        playerSpeed += 1f;
+
+        Instantiate(effectSpeed, transform).layer = gameObject.layer;
 
         yield return new WaitForSeconds(5);
 
-        playerSpeed -= 0.5f;
+        playerSpeed -= 1f;
     }
 
     public void Heal()
     {
         currentHealth += 10;
+
         if (currentHealth > 100)
         {
             currentHealth = 100;
-        } 
+        }
+
+        Instantiate(effectHeal, transform.position, Quaternion.identity).layer = gameObject.layer;
     }
     public IEnumerator attackSpeedModifiy()
     {
         attackSpeed /= 1.2f;
+
+        Instantiate(effectAttack, transform).layer = gameObject.layer;
+
         yield return new WaitForSeconds(5);
+
         attackSpeed *=  1.2f;
     }
 }

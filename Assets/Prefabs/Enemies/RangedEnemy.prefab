@@ -48,10 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fcfd340dfa6b40d4b9b80bab11fc008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreAlpha: 0
   objectOnLayer1: 1
-  colorRed: 1
-  colorGreen: 1
-  colorBlue: 1
+  colorRed: 0
+  colorGreen: 0
+  colorBlue: 0
   renderer: {fileID: 0}
   objectVisible: 0
   damageAmount: 10
@@ -60,7 +61,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   animator: {fileID: 0}
   enemyActive: 1
-  EnemySpeed: 0.4
+  EnemySpeed: 2.5
   maxHealth: 40
   dustParticles: {fileID: 8421183679423886226, guid: 0014324afd3db614d89b1a27a69b90f4, type: 3}
   bulletPrefab: {fileID: 5054069694760190667, guid: 2cb1976cf7f2049b7bb9016e78280cd5, type: 3}

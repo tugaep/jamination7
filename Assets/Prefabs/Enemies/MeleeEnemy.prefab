@@ -133,21 +133,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10149ab8586e9834a8abe637ca47e471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreAlpha: 0
   objectOnLayer1: 0
-  colorRed: 1
-  colorGreen: 1
-  colorBlue: 1
+  colorRed: 0
+  colorGreen: 0
+  colorBlue: 0
   renderer: {fileID: 0}
   objectVisible: 0
   damageAmount: 1
-  attackCooldown: 0.3
+  attackCooldown: 0.2
   attackRange: 1
   targetPlayer: {fileID: 0}
   animator: {fileID: 0}
   enemyActive: 1
-  EnemySpeed: 0.7
+  EnemySpeed: 3.5
   maxHealth: 20
   dustParticles: {fileID: 8421183679423886226, guid: 0014324afd3db614d89b1a27a69b90f4, type: 3}
+  flyAttackParticles: {fileID: 7847385596319881345, guid: 5e1dd03101fd6884dab1a5126b1612da, type: 3}
   flySprites:
   - {fileID: 21300000, guid: 070e9d4aebeb6e747a0f24d0e652e892, type: 3}
   - {fileID: 21300000, guid: 41e2a7de59ca2b140b22cf7ffc33f418, type: 3}
@@ -252,7 +254,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c4c2713376c2d424baac23c7150d9538, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -296,7 +298,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
