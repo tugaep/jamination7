@@ -13,9 +13,15 @@ public class ColorManager : MonoBehaviour
 
     void Start()
     {
+        layer0Green = Random.Range(0, 2) == 0;
+        if(Random.Range(0, 2) == 0)
+        {
+            layer0Blue = true;
+            layer0Red = false;
+        }
+
         onColorChanged.Invoke();
     }
-
 
     /// <summary>
     /// Moves the light source from a scene to the other

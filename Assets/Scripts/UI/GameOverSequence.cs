@@ -19,6 +19,7 @@ public class GameOverSequence : MonoBehaviour
         {
             gameTerminatedOnce = true;
 
+            FindObjectOfType<ColorSwitcher>().allowColorSwitching = false;
             StartCoroutine(GameOverSeq(player1Win));
         }
     }
