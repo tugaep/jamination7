@@ -4,5 +4,8 @@ Sesler:
 > Akrep mermisi temas
 > Akrep Ölme
 > Yılan idle
+> örümcek idle
+> örümcek saldırı
+> örümcek ölme
 > Kaybetme
 > Renk değiştirme

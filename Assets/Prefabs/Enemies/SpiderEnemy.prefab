@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4119387453833411695}
   - component: {fileID: 4107897485758851053}
   m_Layer: 0
-  m_Name: SpiderSprite
+  m_Name: FlySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!95 &2125164673649139452
 Animator:
   serializedVersion: 5
@@ -328,7 +328,7 @@ MonoBehaviour:
   EnemySpeed: 2.5
   maxHealth: 80
   dustParticles: {fileID: 8421183679423886226, guid: 0014324afd3db614d89b1a27a69b90f4, type: 3}
-  spiderAttackParticles: {fileID: 0}
+  spiderAttackParticles: {fileID: 2863459116032016324, guid: f75afa87083b43d4c8db1cac7291daf7, type: 3}
   spiderSprites:
   - {fileID: 21300000, guid: 783416dc424e5402390150347b3998f0, type: 3}
   - {fileID: 21300000, guid: cb6f9c37fb0bf48fe8daf2d62eb1a600, type: 3}

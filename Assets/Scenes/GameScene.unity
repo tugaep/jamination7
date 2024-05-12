@@ -2628,7 +2628,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82f532f7cec64949812b77c95c9f350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 6934904228310290162, guid: 200f939ff57a77b45b749e53a100e463, type: 3}
+  obstacles:
+  - {fileID: 6934904228310290162, guid: 8acc87d0a1f79e74da4cbef3a07da74d, type: 3}
+  - {fileID: 6934904228310290162, guid: 61da0f20f91d6f14f99a811a85af7bff, type: 3}
+  - {fileID: 6934904228310290162, guid: 200f939ff57a77b45b749e53a100e463, type: 3}
 --- !u!114 &1210897371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2915,7 +2918,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 54, y: 32}
+  m_Size: {x: 40.5, y: 24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3492,7 +3495,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 54, y: 32}
+  m_Size: {x: 40.5, y: 24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
