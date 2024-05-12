@@ -139,13 +139,13 @@ MonoBehaviour:
   renderer: {fileID: 0}
   objectVisible: 0
   damageAmount: 10
-  attackCooldown: 0.4
+  attackCooldown: 0.2
   attackRange: 6
   targetPlayer: {fileID: 0}
   animator: {fileID: 0}
   enemyActive: 1
   EnemySpeed: 2
-  maxHealth: 100
+  maxHealth: 30
   dustParticles: {fileID: 8421183679423886226, guid: 0014324afd3db614d89b1a27a69b90f4, type: 3}
   bulletPrefab: {fileID: 5054069694760190667, guid: 2cb1976cf7f2049b7bb9016e78280cd5, type: 3}
   attackCooldownNew: 1
