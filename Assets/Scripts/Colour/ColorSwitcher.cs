@@ -10,12 +10,14 @@ public class ColorSwitcher : MonoBehaviour
     [SerializeField] RectTransform lightBlue;
     [SerializeField] RectTransform p1Pointer;
     [SerializeField] RectTransform p2Pointer;
-    [SerializeField] Image cooldownIcon;
+    [SerializeField] Image p1CooldownIcon;
+    [SerializeField] Image p2CooldownIcon;
 
     ColorManager colorManager;
     const float cooldown = 2f;
 
-    float switchCooldown = 0f;
+    float p1Cooldown = 0f;
+    float p2Cooldown = 0f;
 
     int p1LightPointer = -1;    // -1: nothing, 0 red, 1 green, 2 blue
     int p2LightPointer = -1;    // -1: nothing, 0 red, 1 green, 2 blue
@@ -26,6 +28,10 @@ public class ColorSwitcher : MonoBehaviour
     void Start()
     {
         colorManager = ColorManager.instance;
+
+        colorManager.ChangeLightPosition(Random.Range(0, 3));
+        colorManager.ChangeLightPosition(Random.Range(0, 3));
+        colorManager.ChangeLightPosition(Random.Range(0, 3));
     }
 
     void Update()
@@ -67,18 +73,18 @@ public class ColorSwitcher : MonoBehaviour
         }
 
         // Cooldown Icon Update
-        cooldownIcon.fillAmount = switchCooldown / cooldown;
+        p1CooldownIcon.fillAmount = p1Cooldown / cooldown;
+        p2CooldownIcon.fillAmount = p2Cooldown / cooldown;
     }
 
-
-    // This code is awful for maintability but i am too lazy to change
+    // This code is awful for maintability but i am too lazy to change, yeah i regret this
     void ColorSwitchingUpdate()
     {
         int colorsOnLayer0 = (colorManager.layer0Red ? 1 : 0) + (colorManager.layer0Green ? 1 : 0) + (colorManager.layer0Blue ? 1 : 0);
 
         // Player 1 Color Stealing
         #region PLAYER1
-        if (colorsOnLayer0 == 1 && Input.GetButton("P1Steal") && p1LightPointer == -1 && switchCooldown < 0)
+        if (Input.GetButton("P1Steal") && p1LightPointer == -1 && p1Cooldown < 0)
         {
             // When button is pressed, start pointing a color
 
@@ -95,8 +101,31 @@ public class ColorSwitcher : MonoBehaviour
 
             colorManager.ChangeLightPosition(p1LightPointer);
 
+            // balancing
+            if(colorsOnLayer0 == 2)
+            {
+                int opt1, opt2;
+                if(p1LightPointer == 0)
+                {
+                    opt1 = 1;
+                    opt2 = 2;
+                }
+                else if (p1LightPointer == 1)
+                {
+                    opt1 = 0;
+                    opt2 = 2;
+                }
+                else
+                {
+                    opt1 = 0;
+                    opt2 = 1;
+                }
+
+                colorManager.ChangeLightPosition(Random.Range(0, 2) == 0 ? opt1 : opt2);
+            }
+
             p1LightPointer = -1;
-            switchCooldown = cooldown;
+            p1Cooldown = cooldown;
         }
         else if (p1LightPointer != -1)
         {
@@ -106,12 +135,27 @@ public class ColorSwitcher : MonoBehaviour
             {
                 p1PointDelay = 0;
 
-                if (!colorManager.layer0Red && p1LightPointer != 0)
-                    p1LightPointer = 0;
-                else if (!colorManager.layer0Green && p1LightPointer != 1)
-                    p1LightPointer = 1;
-                else
-                    p1LightPointer = 2;
+                int newPtr = -1;
+                int i = 0;
+                int nextPtr = p1LightPointer;
+                while (newPtr == -1 && i < 3)
+                {
+                    nextPtr = (nextPtr + 1) % 3;
+
+                    if (!colorManager.layer0Red && nextPtr == 0)
+                        newPtr = 0;
+                    else if (!colorManager.layer0Green && nextPtr == 1)
+                        newPtr = 1;
+                    else if (!colorManager.layer0Blue && nextPtr == 2)
+                        newPtr = 2;
+
+                    i++;
+                }
+
+                if (newPtr != -1)
+                {
+                    p2LightPointer = newPtr;
+                }
             }
             p1PointDelay += Time.deltaTime;
 
@@ -120,7 +164,7 @@ public class ColorSwitcher : MonoBehaviour
 
         // Player 2 Color Stealing(same as the upper one)
         #region PLAYER2
-        if (colorsOnLayer0 == 2 && Input.GetButton("P2Steal") && p2LightPointer == -1 && switchCooldown < 0)
+        if (Input.GetButton("P2Steal") && p2LightPointer == -1 && p2Cooldown < 0)
         {
             // When button is pressed, start pointing a color
 
@@ -137,8 +181,31 @@ public class ColorSwitcher : MonoBehaviour
 
             colorManager.ChangeLightPosition(p2LightPointer);
 
+            // balancing
+            if (colorsOnLayer0 == 1)
+            {
+                int opt1, opt2;
+                if (p1LightPointer == 0)
+                {
+                    opt1 = 1;
+                    opt2 = 2;
+                }
+                else if (p1LightPointer == 1)
+                {
+                    opt1 = 0;
+                    opt2 = 2;
+                }
+                else
+                {
+                    opt1 = 0;
+                    opt2 = 1;
+                }
+
+                colorManager.ChangeLightPosition(Random.Range(0, 2) == 0 ? opt1 : opt2);
+            }
+
             p2LightPointer = -1;
-            switchCooldown = cooldown;
+            p2Cooldown = cooldown;
 
         }
         else if (p2LightPointer != -1)
@@ -149,18 +216,34 @@ public class ColorSwitcher : MonoBehaviour
             {
                 p1PointDelay = 0;
 
-                if (colorManager.layer0Red && p2LightPointer != 0)
-                    p2LightPointer = 0;
-                else if (colorManager.layer0Green && p2LightPointer != 1)
-                    p2LightPointer = 1;
-                else
-                    p2LightPointer = 2;
+                int newPtr = -1;
+                int i = 0;
+                int nextPtr = p2LightPointer;
+                while(newPtr == -1 && i < 3)
+                {
+                    nextPtr = (nextPtr + 1) % 3;
+
+                    if (colorManager.layer0Red && nextPtr == 0)
+                        newPtr = 0;
+                    else if (colorManager.layer0Green && nextPtr == 1)
+                        newPtr = 1;
+                    else if (colorManager.layer0Blue && nextPtr == 2)
+                        newPtr = 2;
+
+                    i++;
+                }
+
+                if(newPtr != -1)
+                {
+                    p2LightPointer = newPtr;
+                }
             }
             p1PointDelay += Time.deltaTime;
 
         }
         #endregion
 
-        switchCooldown -= Time.deltaTime;
+        p1Cooldown -= Time.deltaTime;
+        p2Cooldown -= Time.deltaTime;
     }
 }

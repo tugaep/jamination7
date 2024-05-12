@@ -32,7 +32,7 @@ public class PlayerTongueAttack : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             float enmDistance = Vector3.Distance(enemy.transform.position, transform.position);
-            if ((enemy.gameObject.layer == layer + 6) && Vector3.Dot((enemy.transform.position - transform.position).normalized, direction) > 0.9f && enmDistance < nearestDistance && enemy.enemyActive)
+            if ((enemy.gameObject.layer == layer + 6) && Vector3.Dot((enemy.transform.position - renderer.transform.position).normalized, direction) > 0.9f && enmDistance < nearestDistance && enemy.enemyActive)
             {
                 nearestDistance = enmDistance;
                 nearestEnemy = enemy;
@@ -43,7 +43,7 @@ public class PlayerTongueAttack : MonoBehaviour
         {
             nearestEnemy.TakeDamage(damage);
 
-            transform.right = nearestEnemy.transform.position - transform.position;
+            transform.right = nearestEnemy.transform.position - renderer.transform.position;
             renderer.size = new Vector3(nearestDistance, 0.25f);
 
             // weird particles

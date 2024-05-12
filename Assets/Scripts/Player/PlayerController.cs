@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject effectHeal;
     [SerializeField] GameObject effectAttack;
 
+    Animator animator;
     Rigidbody2D rb2;
     Vector3 facingDirection = Vector3.right;
 
@@ -30,11 +31,13 @@ public class PlayerController : MonoBehaviour
     string inputAttackName;
 
     float attackCooldown = 0f;
-
     float attackSpeed = 0.5f;
-   
+
+    int prevDirection = -1;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb2 = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
 
@@ -71,6 +74,16 @@ public class PlayerController : MonoBehaviour
 
                 tongue.AttackDirection(facingDirection);
             }
+
+            //Animations
+            int _direction = Mathf.Clamp(4 - Mathf.RoundToInt(Vector2.SignedAngle(Vector2.right, direction) / 45), 0, 8);
+            if (prevDirection != _direction && direction.sqrMagnitude > 0.1f)
+            {
+                prevDirection = _direction;
+                animator.Play("player_walk_" + _direction);
+            }
+
+            animator.speed = Mathf.Clamp01(direction.sqrMagnitude);
         }
     }
 
