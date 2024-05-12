@@ -13,6 +13,7 @@ public class Enemy : ColorfulObject
     [HideInInspector] public bool enemyActive = true;
     [SerializeField] float EnemySpeed = 1f;
     [SerializeField] int maxHealth = 100;
+    [SerializeField] GameObject dustParticles;
 
     Rigidbody2D rb2;
     Collider2D col;
@@ -101,6 +102,8 @@ public class Enemy : ColorfulObject
             Destroy(gameObject);
 
             ColorManager.instance.onColorChanged -= ColorChanged;
+
+            Instantiate(dustParticles, transform.position, Quaternion.identity);
         }
     }
 
