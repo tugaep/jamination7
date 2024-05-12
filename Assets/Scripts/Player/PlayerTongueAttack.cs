@@ -32,7 +32,7 @@ public class PlayerTongueAttack : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             float enmDistance = Vector3.Distance(enemy.transform.position, transform.position);
-            if ((enemy.gameObject.layer == layer + 6) && Vector3.Dot((enemy.transform.position - renderer.transform.position).normalized, direction) > 0.9f && enmDistance < nearestDistance && enemy.enemyActive)
+            if ((enemy.gameObject.layer == layer + 6) && Vector3.Dot((enemy.transform.position - transform.position).normalized, direction) > 0.9f && enmDistance < nearestDistance && enemy.enemyActive)
             {
                 nearestDistance = enmDistance;
                 nearestEnemy = enemy;
@@ -44,7 +44,7 @@ public class PlayerTongueAttack : MonoBehaviour
             nearestEnemy.TakeDamage(damage);
 
             transform.right = nearestEnemy.transform.position - renderer.transform.position;
-            renderer.size = new Vector3(nearestDistance, 0.25f);
+            renderer.size = new Vector3(nearestDistance, 0.125f);
 
             // weird particles
             GameObject obj = Instantiate(tongueParticles, nearestEnemy.transform.position, Quaternion.identity);
@@ -55,7 +55,7 @@ public class PlayerTongueAttack : MonoBehaviour
         }
         else
         {
-            renderer.size = new Vector3(4, 0.25f);
+            renderer.size = new Vector3(4, 0.125f);
 
             SfxPlayer.instance.PlaySound("lick");
         }
@@ -66,10 +66,10 @@ public class PlayerTongueAttack : MonoBehaviour
         while(Time.time - startTime < 0.2f)
         {
             yield return null;
-            renderer.size = new Vector3(renderer.size.x * 0.9f, 0.25f);
+            renderer.size = new Vector3(renderer.size.x * 0.9f, 0.125f);
         }
 
-        renderer.size = new Vector3(0, 0.25f);
+        renderer.size = new Vector3(0, 0.125f);
     }
 
     private void OnCollisionTrigger2D(Collider2D col)
