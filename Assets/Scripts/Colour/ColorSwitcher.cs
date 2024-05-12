@@ -25,13 +25,11 @@ public class ColorSwitcher : MonoBehaviour
     float p1PointDelay = 0f;
     float p2PointDelay = 0f;
 
+    public bool allowColorSwitching = true;
+
     void Start()
     {
         colorManager = ColorManager.instance;
-
-        colorManager.ChangeLightPosition(Random.Range(0, 3));
-        colorManager.ChangeLightPosition(Random.Range(0, 3));
-        colorManager.ChangeLightPosition(Random.Range(0, 3));
     }
 
     void Update()
@@ -84,7 +82,7 @@ public class ColorSwitcher : MonoBehaviour
 
         // Player 1 Color Stealing
         #region PLAYER1
-        if (Input.GetButton("P1Steal") && p1LightPointer == -1 && p1Cooldown < 0)
+        if (Input.GetButton("P1Steal") && p1LightPointer == -1 && p1Cooldown < 0 && allowColorSwitching)
         {
             // When button is pressed, start pointing a color
 
@@ -127,7 +125,7 @@ public class ColorSwitcher : MonoBehaviour
             p1LightPointer = -1;
             p1Cooldown = cooldown;
         }
-        else if (p1LightPointer != -1)
+        else if (p1LightPointer != -1 && allowColorSwitching)
         {
             // Change the pointed color while holding the button
 
@@ -135,26 +133,11 @@ public class ColorSwitcher : MonoBehaviour
             {
                 p1PointDelay = 0;
 
-                int newPtr = -1;
-                int i = 0;
-                int nextPtr = p1LightPointer;
-                while (newPtr == -1 && i < 3)
-                {
-                    nextPtr = (nextPtr + 1) % 3;
-
-                    if (!colorManager.layer0Red && nextPtr == 0)
-                        newPtr = 0;
-                    else if (!colorManager.layer0Green && nextPtr == 1)
-                        newPtr = 1;
-                    else if (!colorManager.layer0Blue && nextPtr == 2)
-                        newPtr = 2;
-
-                    i++;
-                }
+                int newPtr = PointNextLight(p1LightPointer, true);
 
                 if (newPtr != -1)
                 {
-                    p2LightPointer = newPtr;
+                    p1LightPointer = newPtr;
                 }
             }
             p1PointDelay += Time.deltaTime;
@@ -164,7 +147,7 @@ public class ColorSwitcher : MonoBehaviour
 
         // Player 2 Color Stealing(same as the upper one)
         #region PLAYER2
-        if (Input.GetButton("P2Steal") && p2LightPointer == -1 && p2Cooldown < 0)
+        if (Input.GetButton("P2Steal") && p2LightPointer == -1 && p2Cooldown < 0 && allowColorSwitching)
         {
             // When button is pressed, start pointing a color
 
@@ -208,7 +191,7 @@ public class ColorSwitcher : MonoBehaviour
             p2Cooldown = cooldown;
 
         }
-        else if (p2LightPointer != -1)
+        else if (p2LightPointer != -1 && allowColorSwitching)
         {
             // Change the pointed color while holding the button
 
@@ -216,22 +199,7 @@ public class ColorSwitcher : MonoBehaviour
             {
                 p1PointDelay = 0;
 
-                int newPtr = -1;
-                int i = 0;
-                int nextPtr = p2LightPointer;
-                while(newPtr == -1 && i < 3)
-                {
-                    nextPtr = (nextPtr + 1) % 3;
-
-                    if (colorManager.layer0Red && nextPtr == 0)
-                        newPtr = 0;
-                    else if (colorManager.layer0Green && nextPtr == 1)
-                        newPtr = 1;
-                    else if (colorManager.layer0Blue && nextPtr == 2)
-                        newPtr = 2;
-
-                    i++;
-                }
+                int newPtr = PointNextLight(p2LightPointer, false);
 
                 if(newPtr != -1)
                 {
@@ -245,5 +213,30 @@ public class ColorSwitcher : MonoBehaviour
 
         p1Cooldown -= Time.deltaTime;
         p2Cooldown -= Time.deltaTime;
+    }
+
+    int PointNextLight(int currentPtrPos, bool forLayer0)
+    {
+        int currentPointer = currentPtrPos;
+
+        for (int i = 0; i < 3; i++)
+        {
+            currentPointer = (currentPointer + 1) % 3;
+
+            if(colorManager.layer0Red != forLayer0 && currentPointer == 0)
+            {
+                return currentPointer;
+            }
+            else if (colorManager.layer0Green != forLayer0 && currentPointer == 1)
+            {
+                return currentPointer;
+            }
+            else if (colorManager.layer0Blue != forLayer0 && currentPointer == 2)
+            {
+                return currentPointer;
+            }
+        }
+
+        return -1;
     }
 }
