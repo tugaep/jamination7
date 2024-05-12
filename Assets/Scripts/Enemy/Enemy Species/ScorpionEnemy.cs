@@ -14,7 +14,7 @@ public class ScorpionEnemy : RangedEnemy
         base.Update();
 
         // Walk Animation
-        if (prevDirection != direction)
+        if (prevDirection != direction && enemyActive)
         {
             prevDirection = direction;
             animator.Play("scorpion_walk_" + direction);

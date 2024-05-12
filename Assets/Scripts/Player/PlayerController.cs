@@ -93,6 +93,9 @@ public class PlayerController : MonoBehaviour
             playerActive = false;
 
         }
+
+        //Audio
+        SfxPlayer.instance.PlaySound("damage");
     }
 
     public IEnumerator IncreaseSpeed()

@@ -60,7 +60,14 @@ public class PlayerTongueAttack : MonoBehaviour
             SfxPlayer.instance.PlaySound("lick");
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
+
+        float startTime = Time.time;
+        while(Time.time - startTime < 0.2f)
+        {
+            yield return null;
+            renderer.size = new Vector3(renderer.size.x * 0.9f, 0.25f);
+        }
 
         renderer.size = new Vector3(0, 0.25f);
     }

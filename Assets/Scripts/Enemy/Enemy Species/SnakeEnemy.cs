@@ -16,7 +16,7 @@ public class SnakeEnemy : MeleeEnemy
         base.Update();
 
         // Walk Animation
-        if (prevDirection != direction)
+        if (prevDirection != direction && enemyActive)
         {
             prevDirection = direction;
             animator.Play("snake_" + direction);
@@ -28,5 +28,12 @@ public class SnakeEnemy : MeleeEnemy
         base.Attack();
 
         Instantiate(snakeAttackParticles, targetPlayer.transform.position, Quaternion.identity).layer = gameObject.layer;
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        SfxPlayer.instance.PlaySound("snake_death");
     }
 }
