@@ -12,15 +12,6 @@ public class GameOverSequence : MonoBehaviour
 
     bool gameTerminatedOnce = false;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void TerminateGame(bool player1Win)
     {
@@ -63,17 +54,9 @@ public class GameOverSequence : MonoBehaviour
         // Fading the loser player's view
         RawImage fadingImg = player1Win ? player2View : player1View;
         RawImage growingImg = player1Win ? player1View : player2View;
-        for (float t = 5; t > 0; t -= Time.unscaledDeltaTime)
+        for (float t = 1; t > 0; t -= Time.unscaledDeltaTime)
         {
-            fadingImg.color = new Color(t / 5, t / 5, t / 5, t / 5);
-
-            if(t < 3)
-            {
-                Vector3 imgPos = growingImg.rectTransform.localPosition;
-                growingImg.rectTransform.localPosition *= 1 - (Time.unscaledDeltaTime * 10);
-
-                growingImg.transform.localScale = Vector3.one * ((6 - t) / 3);
-            }
+            fadingImg.color = new Color(t, t, t, t);
 
             yield return null;
         }
@@ -82,9 +65,11 @@ public class GameOverSequence : MonoBehaviour
 
         string winnerName = player1Win ? new PlayerNames().GetNames().Item1 : new PlayerNames().GetNames().Item2;
         gameOverText.text = winnerName.ToUpper() + " IS THE POSSESSOR OF ALL THE COLORS FROM NOW ON!";
-        for(float t = 0; t < 1; t += Time.unscaledDeltaTime)
+        for(float t = 0; t < 2; t += Time.unscaledDeltaTime)
         {
-            gameOverText.color = new Color(0, 0, 0, t);
+            growingImg.rectTransform.localPosition *= 1 - (Time.unscaledDeltaTime * 10);
+
+            gameOverText.color = new Color(0, 0, 0, t / 2);
             yield return null;
         }
 

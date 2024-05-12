@@ -65,9 +65,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown(inputAttackName) && attackCooldown < 0)
             {
                 /*GameObject bullet = Instantiate(bulletPrefab, transform.position + facingDirection, Quaternion.identity);
-                bullet.GetComponent<PlayerBullet>().Init(facingDirection * playerSpeed / 3, playerLayer == 1);
+                bullet.GetComponent<PlayerBullet>().Init(facingDirection * playerSpeed / 3, playerLayer == 1);*/
 
-                attackCooldown = attackSpeed;*/
+                attackCooldown = attackSpeed;
 
                 tongue.AttackDirection(facingDirection);
             }

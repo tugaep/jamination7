@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015178288172983180}
-  - component: {fileID: 6047223142123580848}
+  - component: {fileID: -5633101887963100227}
   - component: {fileID: 8155720535177741023}
   - component: {fileID: 9175860835019156245}
   - component: {fileID: 7776954907388338225}
   m_Layer: 0
-  m_Name: RangedEnemy
+  m_Name: ScorpionEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 6931940221244240215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6047223142123580848
+--- !u!114 &-5633101887963100227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,11 +45,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 577505034493336760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fcfd340dfa6b40d4b9b80bab11fc008, type: 3}
+  m_Script: {fileID: 11500000, guid: 461011e3239a15e40a4f6d73843713ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreAlpha: 0
-  objectOnLayer1: 1
+  objectOnLayer1: 0
   colorRed: 0
   colorGreen: 0
   colorBlue: 0

@@ -93,13 +93,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015178288172983180}
-  - component: {fileID: 2715126979021148064}
+  - component: {fileID: 7600302856138102243}
   - component: {fileID: 8155720535177741023}
   - component: {fileID: 9175860835019156245}
   - component: {fileID: 2125164673649139452}
   - component: {fileID: 7193190613648323912}
   m_Layer: 0
-  m_Name: MeleeEnemy
+  m_Name: FlyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ Transform:
   - {fileID: 4119387453833411695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2715126979021148064
+--- !u!114 &7600302856138102243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 577505034493336760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10149ab8586e9834a8abe637ca47e471, type: 3}
+  m_Script: {fileID: 11500000, guid: db95bfa27465a4c48bf55e59cf198cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreAlpha: 0

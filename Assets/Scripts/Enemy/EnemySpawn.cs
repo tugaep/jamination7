@@ -8,8 +8,7 @@ public class EnemySpawn : MonoBehaviour
 
     public bool keepSpawning = true;
 
-    public GameObject meleeEnemy;
-    public GameObject rangedEnemy;
+    public GameObject[] enemyPrefabs;
     
     public PlayerController playerController;
 
@@ -19,16 +18,8 @@ public class EnemySpawn : MonoBehaviour
     {
 
         Vector2 spawnPoint = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * 11.5f + (Vector2)transform.position;
-        if(Random.Range(0,2) == 0)
-        { 
-            MeleeEnemy enemy = Instantiate(meleeEnemy, spawnPoint, Quaternion.identity).GetComponent<MeleeEnemy>();
-            enemy.Init(playerController, onLayer1);
-        }
-        else
-        {
-            RangedEnemy enemy = Instantiate(rangedEnemy, spawnPoint, Quaternion.identity).GetComponent<RangedEnemy>();
-            enemy.Init(playerController, onLayer1);
-        }
+        Enemy enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoint, Quaternion.identity).GetComponent<Enemy>();
+        enemy.Init(playerController, onLayer1);
     }
 
     private void Update()
