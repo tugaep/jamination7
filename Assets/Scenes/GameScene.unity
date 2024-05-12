@@ -1259,6 +1259,7 @@ MonoBehaviour:
   - {fileID: 577505034493336760, guid: 6385c80b71a35ac44a547f5be15823bc, type: 3}
   - {fileID: 577505034493336760, guid: d81b56b00b114492592f3ac19d6cdb90, type: 3}
   - {fileID: 577505034493336760, guid: d932300807626b744bc896b6292dc0fd, type: 3}
+  - {fileID: 577505034493336760, guid: c0246eaaa1f4c468b964d73b1a004535, type: 3}
   playerController: {fileID: 971061058}
 --- !u!114 &519420034
 MonoBehaviour:
@@ -2899,12 +2900,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: a47f3b67f682acb4b8378274f07a2d83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a9f047ad46844165a25ec783f86ae51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 54, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2920,7 +2921,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1627243030}
@@ -3474,12 +3475,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: a47f3b67f682acb4b8378274f07a2d83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a9f047ad46844165a25ec783f86ae51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 54, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3495,7 +3496,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -3516,7 +3517,7 @@ MonoBehaviour:
   objectOnLayer1: 0
   colorRed: 1
   colorGreen: 1
-  colorBlue: 1
+  colorBlue: 0
   renderer: {fileID: 0}
   objectVisible: 0
 --- !u!114 &1473983721
@@ -3897,6 +3898,7 @@ MonoBehaviour:
   - {fileID: 577505034493336760, guid: 6385c80b71a35ac44a547f5be15823bc, type: 3}
   - {fileID: 577505034493336760, guid: d81b56b00b114492592f3ac19d6cdb90, type: 3}
   - {fileID: 577505034493336760, guid: d932300807626b744bc896b6292dc0fd, type: 3}
+  - {fileID: 577505034493336760, guid: c0246eaaa1f4c468b964d73b1a004535, type: 3}
   playerController: {fileID: 1866184502}
 --- !u!114 &1627243032
 MonoBehaviour:

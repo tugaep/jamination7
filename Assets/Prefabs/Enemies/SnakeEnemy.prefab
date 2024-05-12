@@ -146,7 +146,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   animator: {fileID: 0}
   enemyActive: 1
-  EnemySpeed: 3.1
+  EnemySpeed: 2.8
   maxHealth: 50
   dustParticles: {fileID: 8421183679423886226, guid: 0014324afd3db614d89b1a27a69b90f4, type: 3}
   snakeAttackParticles: {fileID: 5997700184574610400, guid: c851f96691764f943b9ec08c365da019, type: 3}

@@ -13,6 +13,6 @@ public class CameraFollowedBackground : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(Mathf.Round(target.position.x / 4) * 4, Mathf.Round(target.position.y / 4) * 4, 0);
+        transform.position = new Vector3(Mathf.Round(target.position.x / 27) * 27, Mathf.Round(target.position.y / 16) * 16, 0);
     }
 }
