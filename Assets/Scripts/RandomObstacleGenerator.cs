@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RandomObstacleGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject obstacle;
+    [SerializeField] GameObject[] obstacles;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class RandomObstacleGenerator : MonoBehaviour
                 // Player 1 Object Creation
                 if(Mathf.PerlinNoise(ix * noiseSeed1x + noiseSeed0x, iy * noiseSeed1y + noiseSeed0y) > 0.7f)
                 {
-                    ColorfulObstacle colObs = Instantiate(obstacle, new Vector3(ix, iy, 0), Quaternion.identity).GetComponent<ColorfulObstacle>();
+                    ColorfulObstacle colObs = Instantiate(obstacles[Random.Range(0, 3)], new Vector3(ix, iy, 0), Quaternion.identity).GetComponent<ColorfulObstacle>();
                     colObs.gameObject.layer = 6;
                     colObs.objectOnLayer1 = false;
 
@@ -34,7 +34,7 @@ public class RandomObstacleGenerator : MonoBehaviour
                 // Player 2 Object Creation
                 if (Mathf.PerlinNoise(ix * noiseSeed0x + noiseSeed1x, iy * noiseSeed0y + noiseSeed1y) > 0.7f)
                 {
-                    ColorfulObstacle colObs = Instantiate(obstacle, new Vector3(ix, iy, 0), Quaternion.identity).GetComponent<ColorfulObstacle>();
+                    ColorfulObstacle colObs = Instantiate(obstacles[Random.Range(0, 3)], new Vector3(ix, iy, 0), Quaternion.identity).GetComponent<ColorfulObstacle>();
                     colObs.gameObject.layer = 7;
                     colObs.objectOnLayer1 = true;
 

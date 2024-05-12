@@ -61,15 +61,13 @@ public class GameOverSequence : MonoBehaviour
             yield return null;
         }
 
-        Time.timeScale = 0;
-
         string winnerName = player1Win ? new PlayerNames().GetNames().Item1 : new PlayerNames().GetNames().Item2;
         gameOverText.text = winnerName.ToUpper() + " IS THE POSSESSOR OF ALL THE COLORS FROM NOW ON!";
         for(float t = 0; t < 2; t += Time.unscaledDeltaTime)
         {
-            growingImg.rectTransform.localPosition *= 1 - (Time.unscaledDeltaTime * 10);
+            growingImg.rectTransform.anchoredPosition = new Vector2(growingImg.rectTransform.anchoredPosition.x * (1 - (Time.unscaledDeltaTime * 10)) , -40);
 
-            gameOverText.color = new Color(0, 0, 0, t / 2);
+            gameOverText.color = new Color(1, 1, 1, t / 2);
             yield return null;
         }
 
