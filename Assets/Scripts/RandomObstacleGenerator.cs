@@ -7,7 +7,7 @@ public class RandomObstacleGenerator : MonoBehaviour
 {
     [SerializeField] GameObject[] obstacles;
 
-    void Start()
+    void Awake()
     {
         float noiseSeed0x = Random.Range(-5f, 5f);
         float noiseSeed0y = Random.Range(-5f, 5f);

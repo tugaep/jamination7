@@ -3718,7 +3718,7 @@ MonoBehaviour:
   objectOnLayer1: 0
   colorRed: 1
   colorGreen: 1
-  colorBlue: 0
+  colorBlue: 1
   renderer: {fileID: 0}
   objectVisible: 0
 --- !u!114 &1473983721
