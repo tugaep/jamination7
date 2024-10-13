@@ -23,8 +23,7 @@ public class ButtonFunctions : MonoBehaviour
     }
     public void Quit()
     {
-
-        //Application.Quit();
+        Application.Quit();
     }
 
     
